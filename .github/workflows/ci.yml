@@ -1,0 +1,35 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Bước 1: Checkout code
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Bước 2: Thiết lập Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+
+      # Bước 3: Cài đặt dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # Bước 4: Kiểm tra ứng dụng
+      - name: Run tests
+        run: npm test
+
+      # Bước 5: Build hoặc chạy ứng dụng (nếu cần)
+      - name: Run app
+        run: |
+          echo "Application is running!"
