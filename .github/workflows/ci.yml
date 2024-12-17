@@ -20,6 +20,13 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20.x'
+      
+      # Bước kiểm tra JSON hợp lệ
+      - name: Validate package.json
+        run: |
+          echo "Checking if package.json is valid JSON..."
+          cat package.json | jq . > /dev/null
+        shell: bash
 
       # Bước 3: Cài đặt dependencies
       - name: Install dependencies
