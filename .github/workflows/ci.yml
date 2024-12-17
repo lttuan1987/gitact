@@ -20,7 +20,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20.x'
-      
+
+      # Cài đặt jq kiểm tra file json
+      - name: Install jq
+        run: sudo apt-get install -y jq
+
       # Bước kiểm tra JSON hợp lệ
       - name: Validate package.json
         run: |
@@ -40,3 +44,7 @@ jobs:
       - name: Run app
         run: |
           echo "Application is running!"
+
+      # Build success
+      - name: Build success
+        run: echo "CI process completed successfully!"
