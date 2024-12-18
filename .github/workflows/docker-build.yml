@@ -51,6 +51,8 @@ jobs:
       run: |
         docker build -t ghcr.io/${{ github.repository }}/simple-git-action:${{ env.VERSION }} .
 
-    - name: Push Docker image to  GitHub Container Registry
+    - name: Push Docker image to GitHub Container Registry
       run: |
-        docker push ghcr.io/${{ github.repository }}/simple-git-action:{{ env.VERSION }}
+        git config --global user.name "Tuan Lam"
+        git config --global user.email "lttuan1987@gmail.com"
+        docker push ghcr.io/${{ github.repository }}/simple-git-action:${{ env.VERSION }}
